@@ -42,17 +42,18 @@ $ direnv allow
 
 # firebase
 
-```
+```bash
 $ firebase login
+
 $ firebase init
 
-Which Firebase CLI features do you want to setup for this folder? Press Space to select features, then Enter to confirm your choices.
+# Which Firebase CLI features do you want to setup for this folder? Press Space to select features, then Enter to confirm your choices.
 $ Hosting
 
-What do you want to use as your public directory?
+# What do you want to use as your public directory?
 $ dist
 
-Configure as a single-page app (rewrite all urls to /index.html)?
+# Configure as a single-page app (rewrite all urls to /index.html)?
 $ N
 ```
 
