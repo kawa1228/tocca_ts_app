@@ -58,4 +58,3 @@ $ N
 $ yarn build
 $ firebase deploy
 ```
-# ts_tocca_app
