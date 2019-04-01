@@ -1,6 +1,7 @@
 # tocca_ts_app
 
 - https://tocca-project-9f4fc.firebaseio.com
+- https://tocca-project-9f4fc.firebaseapp.com/
 
 > My ultimate Nuxt.js project
 
