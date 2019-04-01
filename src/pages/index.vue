@@ -8,6 +8,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import LoginHome from '~/components/LoginHome/index.vue'
 import Item from '~/components/Item/index.vue'
+import firebase from '~/plugins/frebase.js'
 
 @Component({
   components: {
@@ -16,6 +17,13 @@ import Item from '~/components/Item/index.vue'
   }
 })
 export default class Index extends Vue {
+  created(): void {
+    firebase.auth().onAuthStateChanged(user => {
+      console.log(user)
+      user ? (this.isLogin = true) : (this.isLogin = false)
+    })
+  }
+
   isLogin: boolean = false
 }
 </script>
