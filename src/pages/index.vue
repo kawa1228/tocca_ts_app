@@ -1,22 +1,17 @@
 <template lang="pug">
   .pages
-    LoginHome(v-if="!isLogin")
-    Item(v-if="isLogin")
+    nuxt-link.pages__home(to="/home" v-if="isLogin") マイページ
+    button.pages__login(@click="googleLogin" v-else) Googleでログイン
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import LoginHome from '~/components/LoginHome/index.vue'
-import Item from '~/components/Item/index.vue'
-import firebase from '~/plugins/frebase.js'
+import firebase from '~/plugins/firebase.js'
 
-@Component({
-  components: {
-    LoginHome,
-    Item
-  }
-})
-export default class Index extends Vue {
+@Component({})
+export default class extends Vue {
+  isLogin: boolean = false
+
   created(): void {
     firebase.auth().onAuthStateChanged(user => {
       console.log(user)
@@ -24,6 +19,11 @@ export default class Index extends Vue {
     })
   }
 
-  isLogin: boolean = false
+  async googleLogin(): Promise<void> {
+    await firebase
+      .auth()
+      .signInWithRedirect(new firebase.auth.GoogleAuthProvider())
+    this.$router.push('/home')
+  }
 }
 </script>
