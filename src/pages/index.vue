@@ -5,12 +5,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import firebase from '~/plugins/firebase.js'
 
 @Component({})
 export default class extends Vue {
   isLogin: boolean = false
+
+  @Watch('isLogin')
+  switchPageToHome(after: boolean, before: boolean): void {
+    if (!before && after) {
+      this.$router.push('/home')
+    }
+  }
 
   created(): void {
     firebase.auth().onAuthStateChanged(user => {
@@ -23,7 +30,6 @@ export default class extends Vue {
     await firebase
       .auth()
       .signInWithRedirect(new firebase.auth.GoogleAuthProvider())
-    this.$router.push('/home')
   }
 }
 </script>
