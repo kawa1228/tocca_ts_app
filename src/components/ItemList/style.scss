@@ -1,0 +1,27 @@
+.home {
+  .active {
+    background-color: rgba(0,0,0,0.1);
+  }
+
+  ul {
+    padding: 0;
+    width: 100%;
+    margin: 15px 0 15px 0;
+  }
+
+  ul:first-of-type {
+    border-top: 1px solid rgba(0,0,0,0.42);
+  }
+
+  &__item-name {
+    padding: 4px;
+    font-size: 1.8rem;
+    list-style: none;
+    border-bottom: 1px solid rgba(0,0,0,0.42);
+  }
+
+  &__bottom {
+    position: absolute;
+    bottom: 10px;
+  }
+}
