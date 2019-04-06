@@ -21,7 +21,7 @@ export default class extends Vue {
 
   created(): void {
     firebase.auth().onAuthStateChanged(user => {
-      console.log(user)
+      // todo: userの情報をVuexに入れる処理を追加
       user ? (this.isLogin = true) : (this.isLogin = false)
     })
   }
