@@ -1,7 +1,5 @@
 <template lang="pug">
   .home
-    v-layout(justify-end)
-      v-btn(class="deep-orange darken-1" outline @click="logout") ログアウト
     v-flex(xs12 v-if="items && items.length > 0")
       ul
         li.home__item-name(v-for="(item, i) in items" :class="{active: i === selectIndex}" :key="i" @click="selectItem(i)") {{item.name}} {{item.price}}
