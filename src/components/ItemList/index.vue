@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import firebase from '~/plugins/firebase.js'
 
 @Component({})
@@ -22,26 +22,9 @@ export default class ItemList extends Vue {
   name: string | null = null
   // todo: items.priceがstringになっているので修正
   price: number | null = null
-  items: { name: string | null; price: number | null }[] = []
   selectIndex: number | null = null
 
-  created(): void {
-    firebase
-      .database()
-      .ref('todos/' + this.$store.state.user.id)
-      .once('value')
-      .then(result => {
-        if (result.val()) {
-          this.items = result.val()
-        }
-      })
-  }
-
-  logout(): void {
-    firebase.auth().signOut()
-    // todo: userの情報をVuexで管理してハンドリングする処理を追加
-    this.$router.push('/')
-  }
+  @Prop() items!: { name: string | null; price: number | null }[]
 
   addItem(): void {
     if (this.name === null) return
@@ -60,14 +43,13 @@ export default class ItemList extends Vue {
   }
 
   saveItem() {
-    if (this.$store.state.user.id) {
-      firebase
-        .database()
-        .ref(`todos/${this.$store.state.user.id}`)
-        .set(this.items)
-    } else {
-      console.log('uidがありません')
-    }
+    firebase
+      .database()
+      .ref(`user/${this.$store.state.user.id}`)
+      .set(this.items)
+      .catch(err => {
+        console.log('データの保存に失敗しました', err)
+      })
   }
 }
 </script>

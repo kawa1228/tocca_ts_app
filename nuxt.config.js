@@ -85,5 +85,8 @@ export default {
         })
       }
     }
+  },
+  router: {
+    middleware: 'common'
   }
 }
