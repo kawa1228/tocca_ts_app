@@ -1,3 +1,1 @@
-export const state = () => ({
-  user: {}
-})
+export const state = () => {}

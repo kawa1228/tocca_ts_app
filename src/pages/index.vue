@@ -8,7 +8,9 @@
 import { Vue, Component } from 'vue-property-decorator'
 import firebase from '~/plugins/firebase.js'
 
-@Component({})
+@Component({
+  layout: 'globalnav'
+})
 export default class ItemList extends Vue {
   //
 }

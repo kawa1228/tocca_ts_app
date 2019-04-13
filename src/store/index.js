@@ -1,5 +1,9 @@
 import firebase from '~/plugins/firebase.js'
 
+export const state = () => ({
+  isLoading: false
+})
+
 export const mutations = {
   addUser(state, id) {
     state.user = {
@@ -15,6 +19,12 @@ export const mutations = {
   },
   fetchUserItems(state, items) {
     state.items = items
+  },
+  startIsLoading(state) {
+    state.isLoading = true
+  },
+  stopIsLoading(state) {
+    state.isLoading = false
   }
 }
 
@@ -42,6 +52,13 @@ export const actions = {
       .catch(err => {
         console.log('初期データの読み込みに失敗しました', err)
       })
+  },
+  isLoadingAction(store, isLoad) {
+    if (isLoad) {
+      store.commit('startIsLoading')
+    } else {
+      store.commit('stopIsLoading')
+    }
   }
 }
 

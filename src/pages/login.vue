@@ -1,6 +1,8 @@
 <template lang="pug">
-  .pages
-    v-btn(large @click="googleLogin") Googleでログイン
+  section.login
+    .login__container
+      p 登録してtoccaを体験する
+      v-btn(large @click="googleLogin") Googleでログイン
 </template>
 
 <script lang="ts">
@@ -17,3 +19,15 @@ export default class extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.login {
+  &__container {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+</style>
