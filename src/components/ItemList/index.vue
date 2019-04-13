@@ -1,7 +1,7 @@
 <template lang="pug">
   .item-list
     v-layout(column justify-center align-center)
-      v-container(id="scroll-target" style="max-height: 60vh" class="scroll-y" v-if="items && items.length > 0")
+      v-container(id="scroll-target" style="max-height: 50vh" class="scroll-y" v-if="items && items.length > 0")
         ul.item-list__items
           li.item-list__item-name(v-for="(item, i) in items" :class="{active: i === selectIndex}" :key="i" @click="selectItem(i)") {{item.name}} {{item.price}} 円
     v-flex.item-list__bottom
