@@ -26,6 +26,13 @@ export default class extends Vue {
 
 <style lang="scss" scoped>
 .login {
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.5), #fff, #fff),
+    url('/img/img01.jpg');
+  background-size: cover;
+  position: absolute;
+  height: calc(100% - 56px);
+  width: 100%;
+
   &__wrapper {
     height: calc(80vh - 56px);
   }
