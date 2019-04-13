@@ -1,12 +1,13 @@
 <template lang="pug">
-  header
+  header.globalnav
     v-toolbar
-      v-toolbar-title tocca
+      v-toolbar-title
+        router-link.globalnav__title(to="/") tocca
       v-spacer
       v-toolbar-items
         v-btn(v-show='!isLogin' flat to="/login") ログイン
         v-btn(v-show="isShowHomeLink" flat to="/home") マイページ
-        v-btn(v-show="isLogin" flat @click="logout") ログアウト
+        v-btn(v-if="isLogin" flat @click="logout") ログアウト
 </template>
 
 <script lang="ts">
@@ -28,3 +29,12 @@ export default class Glovalnav extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.globalnav {
+  &__title {
+    color: black;
+    text-decoration: none;
+  }
+}
+</style>
