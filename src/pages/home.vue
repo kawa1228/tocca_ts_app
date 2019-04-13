@@ -1,6 +1,6 @@
 <template lang="pug">
   section
-    .home__alert(v-show="successFlag || errorFlag")
+    .home__alert
       v-alert.teal.lighten-2(:value="successFlag" transition="fade" type="error" icon="check_circle") {{successMessage}}
       v-alert.red.lighten-2(:value="errorFlag" transition="fade" type="error" icon="check_circle") {{errorMessage}}
     .home__loading-block(v-if="isLoading")
