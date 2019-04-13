@@ -1,7 +1,9 @@
 import firebase from '~/plugins/firebase.js'
 
 export const state = () => ({
-  isLoading: false
+  isLoading: false,
+  user: () => {},
+  items: () => []
 })
 
 export const mutations = {
@@ -35,9 +37,6 @@ export const actions = {
     } else {
       console.log('ユーザーidが見つかりません')
     }
-  },
-  initUserAction(store) {
-    store.commit('initUser')
   },
   fetchUserItemsAction(store, id) {
     firebase

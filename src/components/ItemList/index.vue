@@ -20,10 +20,10 @@ import firebase from '~/plugins/firebase.js'
 @Component({})
 export default class ItemList extends Vue {
   name: string | null = null
-  // todo: items.priceがstringになっている？ので修正
   price: number | null = null
   selectIndex: number | null = null
 
+  // todo: this.items.push is not a function / items.priceがstring
   @Prop() items!: { name: string | null; price: number | null }[]
 
   addItem(): void {

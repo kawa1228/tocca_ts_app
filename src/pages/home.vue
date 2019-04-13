@@ -22,10 +22,7 @@ import firebase from '~/plugins/firebase.js'
     store.dispatch('isLoadingAction', true)
     // サインインしているかどうかを判定
     firebase.auth().onAuthStateChanged(user => {
-      if (!user) {
-        console.log('user情報の登録に失敗しました')
-        return
-      }
+      if (!user) return
       // ストアにユーザー情報を登録
       store.dispatch('addUserAction', user.uid)
       // ユーザーデータの読み込み

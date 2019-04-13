@@ -5,9 +5,8 @@
         router-link.globalnav__title(to="/") tocca
       v-spacer
       v-toolbar-items
-        v-btn(v-show='!isLogin' flat to="/login") ログイン
-        v-btn(v-show="isShowHomeLink" flat to="/home") マイページ
-        v-btn(v-if="isLogin" flat @click="logout") ログアウト
+        v-btn(v-if="this.$route.fullPath === '/'" flat :to="'/home'") マイページ
+        v-btn(v-if="this.$route.fullPath === '/home'" flat @click="logout") ログアウト
 </template>
 
 <script lang="ts">
@@ -22,10 +21,14 @@ export default class Glovalnav extends Vue {
     return this.isLogin && this.$route.fullPath !== '/home'
   }
 
+  login(): void {
+    this.$router.push('/login')
+  }
+
   logout(): void {
-    firebase.auth().signOut()
-    this.$store.dispatch('initUserAction')
+    // todo: ログアウト後loginへ遷移される
     this.$router.push('/')
+    firebase.auth().signOut()
   }
 }
 </script>

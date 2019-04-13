@@ -87,6 +87,6 @@ export default {
     }
   },
   router: {
-    middleware: 'common'
+    middleware: 'authenticated'
   }
 }
