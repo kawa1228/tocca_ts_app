@@ -9,9 +9,9 @@
         v-text-field(v-model="name" label="item name" type="text")
         v-text-field(v-model="price" label="price" type="number")
       v-layout(row wrap)
-        v-btn(round outline class="deep-orange accent-4" @click="addItem" @keyup.enter="addItem") 追加
-        v-btn(round outline class="indigo accent-4" v-if="items.length > 0" @click="deleteItem") 削除
-        v-btn(round outline class="green accent-4" v-if="items.length > 0" @click="saveItem") 保存
+        v-btn(round outline class="deep-orange accent-4" @click.native="addItem" @keyup.enter="addItem") 追加
+        v-btn(round outline class="indigo accent-4" v-if="items.length > 0" @click.native="deleteItem") 削除
+        v-btn(round outline class="green accent-4" v-if="items.length > 0" @click.native="saveItem") 保存
 </template>
 
 <script lang="ts">

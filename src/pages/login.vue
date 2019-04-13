@@ -3,7 +3,7 @@
     v-container
       v-layout.login__wrapper(align-center justify-center column)
         p 登録してtoccaを体験する
-        v-btn.login__button(large round color='#EF5350' @click="googleLogin")
+        v-btn.login__button(large round color='#EF5350' @click.native="googleLogin")
           i.fab.fa-google-plus-g
           span.login__title(style="margin-left: 10px;") Googleでログイン
 </template>

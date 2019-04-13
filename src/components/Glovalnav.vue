@@ -6,7 +6,7 @@
       v-spacer
       v-toolbar-items
         v-btn.globalnav__button(v-if="this.$route.fullPath === '/'" flat :to="'/home'" color="#fff") マイページ
-        v-btn.globalnav__button(v-if="this.$route.fullPath === '/home'" flat @click="logout" color="#fff") ログアウト
+        v-btn.globalnav__button(v-if="this.$route.fullPath === '/home'" flat @click.native="logout" color="#fff") ログアウト
 </template>
 
 <script lang="ts">
