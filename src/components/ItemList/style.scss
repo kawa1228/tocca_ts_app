@@ -1,4 +1,13 @@
 .item-list {
+  &__container {
+    height: 58vh;
+    // todo: v-layoutに直す
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .active {
     background-color: #dcdcdc;
   }
@@ -7,14 +16,14 @@
     background-color: #d3d3d3;
   }
 
-  ul {
+  &__items {
     padding: 0;
     width: 100%;
     margin: 15px 0 15px 0;
-  }
 
-  ul:first-of-type {
-    border-top: 1px solid #cd5c5c;
+    &:first-of-type {
+      border-top: 1px solid #cd5c5c;
+    }
   }
 
   &__item-name {

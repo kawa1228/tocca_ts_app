@@ -1,12 +1,12 @@
 <template lang="pug">
   section
     .home__alert
-      v-alert.teal.lighten-2(:value="successFlag" transition="fade" type="error" icon="check_circle") {{successMessage}}
-      v-alert.red.lighten-2(:value="errorFlag" transition="fade" type="error" icon="check_circle") {{errorMessage}}
+      v-alert(:value="successFlag" transition="fade" color="#43A047" icon="check_circle") {{successMessage}}
+      v-alert(:value="errorFlag" transition="fade" color="#E53935" icon="warning") {{errorMessage}}
     .home__loading-block(v-if="isLoading")
       v-progress-circular.mt-4(indeterminate color="primary")
     v-container(v-else)
-      v-layout(justify-space-between mb-5)
+      v-layout(justify-space-between mb-4)
         h1 tocca price
       ItemList(v-if="items" :items="items" @onSave="saveItems" @inputErr="showErrToast")
 </template>
@@ -78,6 +78,7 @@ export default class Home extends Vue {
 <style lang="scss" scoped>
 .v-alert {
   margin: 0;
+  height: 64px;
 }
 .home {
   &__alert {

@@ -1,9 +1,10 @@
 <template lang="pug">
   .item-list
-    v-flex(xs12 v-if="items && items.length > 0")
-      ul
-        li.item-list__item-name(v-for="(item, i) in items" :class="{active: i === selectIndex}" :key="i" @click="selectItem(i)") {{item.name}} {{item.price}} 円
-    .item-list__bottom
+    v-layout(column justify-center align-center)
+      v-container(id="scroll-target" style="max-height: 60vh" class="scroll-y" v-if="items && items.length > 0")
+        ul.item-list__items
+          li.item-list__item-name(v-for="(item, i) in items" :class="{active: i === selectIndex}" :key="i" @click="selectItem(i)") {{item.name}} {{item.price}} 円
+    v-flex.item-list__bottom
       v-layout(row wrap)
         v-text-field(v-model="name" label="item name" type="text")
         v-text-field(v-model="price" label="price" type="number")
