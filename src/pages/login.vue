@@ -1,8 +1,11 @@
 <template lang="pug">
   section.login
-    .login__container
-      p 登録してtoccaを体験する
-      v-btn.mb-5(large @click="googleLogin") Googleでログイン
+    v-container
+      v-layout.login__wrapper(align-center justify-center column)
+        p 登録してtoccaを体験する
+        v-btn.login__button(large round color='#EF5350' @click="googleLogin")
+          i.fab.fa-google-plus-g
+          span.login__title(style="margin-left: 10px;") Googleでログイン
 </template>
 
 <script lang="ts">
@@ -23,12 +26,16 @@ export default class extends Vue {
 
 <style lang="scss" scoped>
 .login {
-  &__container {
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  &__wrapper {
+    height: calc(80vh - 56px);
+  }
+
+  &__button {
+    color: #fff;
+  }
+
+  p {
+    font-size: 2rem;
   }
 }
 </style>
