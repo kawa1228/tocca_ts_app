@@ -23,7 +23,6 @@ export default class ItemList extends Vue {
   price: number | null = null
   selectIndex: number | null = null
 
-  // todo: this.items.push is not a function / items.priceがstring
   @Prop() items!: { name: string | null; price: number | null }[]
 
   addItem(): void {
@@ -46,7 +45,7 @@ export default class ItemList extends Vue {
     firebase
       .database()
       .ref(`user/${this.$store.state.user.id}`)
-      .set(this.items)
+      .set(this.$store.state.items)
       .catch(err => {
         console.log('データの保存に失敗しました', err)
       })
