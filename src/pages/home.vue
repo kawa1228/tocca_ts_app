@@ -26,7 +26,7 @@ import firebase from '~/plugins/firebase.js'
       // ストアにユーザー情報を登録
       store.dispatch('addUserAction', user.uid)
       // ユーザーデータの読み込み
-      store.dispatch('fetchUserItemsAction', user.uid)
+      store.dispatch('fetchUserItems', user.uid)
 
       store.dispatch('isLoadingAction', false)
     })

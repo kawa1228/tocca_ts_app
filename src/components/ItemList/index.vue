@@ -28,7 +28,7 @@ export default class ItemList extends Vue {
 
   addItem(): void {
     if (this.name === null) return
-    this.items.push({ name: this.name, price: this.price })
+    this.$store.dispatch('addItem', { name: this.name, price: this.price })
     this.name = null
     this.price = null
   }
@@ -39,7 +39,7 @@ export default class ItemList extends Vue {
 
   deleteItem() {
     if (this.items.length === 0 || this.selectIndex === null) return
-    this.items.splice(this.selectIndex, 1)
+    this.$store.dispatch('deleteItem', this.selectIndex)
   }
 
   saveItem() {

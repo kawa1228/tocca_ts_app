@@ -19,7 +19,7 @@ export const mutations = {
       isLogin: false
     }
   },
-  fetchUserItems(state, items) {
+  setItems(state, items) {
     state.items = items
   },
   startIsLoading(state) {
@@ -38,19 +38,28 @@ export const actions = {
       console.log('ユーザーidが見つかりません')
     }
   },
-  fetchUserItemsAction(store, id) {
+  fetchUserItems(store, id) {
     firebase
       .database()
       .ref(`user/${id}`)
       .once('value')
       .then(result => {
         if (result.val()) {
-          store.commit('fetchUserItems', result.val())
+          store.commit('setItems', result.val())
         }
       })
       .catch(err => {
         console.log('初期データの読み込みに失敗しました', err)
       })
+  },
+  addItem(store, item) {
+    const items = [...store.state.items, item]
+    store.commit('setItems', items)
+  },
+  deleteItem(store, index) {
+    const items = store.state.items.slice()
+    items.splice(index, 1)
+    store.commit('setItems', items)
   },
   isLoadingAction(store, isLoad) {
     if (isLoad) {
