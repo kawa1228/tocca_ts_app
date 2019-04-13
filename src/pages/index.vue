@@ -1,7 +1,10 @@
 <template lang="pug">
-  section
-    h1 tocca でおトクにお買い物
-    p このへんに良い感じの文言を入れる
+  section.top
+    .bg-mask
+      v-container.top__container
+        v-layout(align-center justify-center column)
+          h1.top__title tocca
+          p 毎日の暮らしを少し賢く、幸せに
 </template>
 
 <script lang="ts">
@@ -15,3 +18,29 @@ export default class ItemList extends Vue {
   //
 }
 </script>
+
+<style lang="scss" scoped>
+.top {
+  color: #fff;
+  background: url('/img/img01.jpg');
+  background-size: cover;
+  position: absolute;
+  height: calc(100% - 56px);
+  width: 100%;
+
+  &__title {
+    font-family: 'Poiret One';
+    font-size: 7rem;
+  }
+
+  &__container {
+    height: inherit;
+    display: flex;
+    color: black;
+  }
+}
+.bg-mask {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+}
+</style>
