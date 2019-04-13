@@ -1,13 +1,14 @@
 <template lang="pug">
   section
-    .home__alert
-      v-alert.teal.lighten-2(:value="saveFlag" transition="fade" type="success" icon="check_circle") 保存しました
+    .home__alert(v-show="successFlag || errorFlag")
+      v-alert.teal.lighten-2(:value="successFlag" transition="fade" type="error" icon="check_circle") {{successMessage}}
+      v-alert.red.lighten-2(:value="errorFlag" transition="fade" type="error" icon="check_circle") {{errorMessage}}
     .home__loading-block(v-if="isLoading")
       v-progress-circular.mt-4(indeterminate color="primary")
     v-container(v-else)
       v-layout(justify-space-between mb-5)
         h1 tocca price
-      ItemList(v-if="items" :items="items" @onSave="saveItems")
+      ItemList(v-if="items" :items="items" @onSave="saveItems" @inputErr="showErrToast")
 </template>
 
 <script lang="ts">
@@ -35,7 +36,10 @@ import firebase from '~/plugins/firebase.js'
   }
 })
 export default class Home extends Vue {
-  saveFlag: boolean = false
+  successFlag: boolean = false
+  errorFlag: boolean = false
+  successMessage: string = '保存しました'
+  errorMessage: string = 'エラー'
 
   get items(): { name: string; price: number }[] {
     return this.$store.getters.getUserItems
@@ -45,15 +49,23 @@ export default class Home extends Vue {
     return this.$store.state.isLoading
   }
 
+  showErrToast(message): void {
+    this.errorMessage = message
+    this.errorFlag = true
+    setTimeout(() => {
+      this.errorFlag = false
+    }, 1000)
+  }
+
   saveItems(): void {
     firebase
       .database()
       .ref(`user/${this.$store.state.user.id}`)
       .set(this.$store.state.items)
       .then(() => {
-        this.saveFlag = true
+        this.successFlag = true
         setTimeout(() => {
-          this.saveFlag = false
+          this.successFlag = false
         }, 1000)
       })
       .catch(err => {

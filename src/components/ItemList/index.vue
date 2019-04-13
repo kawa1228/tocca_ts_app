@@ -26,8 +26,18 @@ export default class ItemList extends Vue {
   @Prop() items!: { name: string | null; price: number | null }[]
 
   addItem(): void {
-    if (this.name === null) return
-    this.$store.dispatch('addItem', { name: this.name, price: this.price })
+    if (this.name === null || this.name === '') {
+      this.$emit('inputErr', '名前を入力してください')
+      return
+    }
+    if (this.price === null) {
+      this.$emit('inputErr', '金額を入力してください')
+      return
+    }
+    this.$store.dispatch('addItem', {
+      name: this.name,
+      price: Number(this.price)
+    })
     this.name = null
     this.price = null
   }
