@@ -42,16 +42,7 @@ export default class ItemList extends Vue {
   }
 
   saveItem() {
-    firebase
-      .database()
-      .ref(`user/${this.$store.state.user.id}`)
-      .set(this.$store.state.items)
-      .then(() => {
-        console.log('データを保存しました')
-      })
-      .catch(err => {
-        console.log('データの保存に失敗しました', err)
-      })
+    this.$emit('onSave')
   }
 }
 </script>
