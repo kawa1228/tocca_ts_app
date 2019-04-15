@@ -9,11 +9,11 @@
   }
 
   .active {
-    background-color: #dcdcdc;
+    background-color: rgba($color: #D6051B, $alpha: 0.2);
   }
 
   .active:hover {
-    background-color: #d3d3d3;
+    background-color: rgba($color: #D6051B, $alpha: 0.3);
   }
 
   &__items {
@@ -22,7 +22,7 @@
     margin: 15px 0 15px 0;
 
     &:first-of-type {
-      border-top: 1px solid #cd5c5c;
+      border-top: 1px solid #a9a9a9;
     }
   }
 
@@ -30,12 +30,12 @@
     padding: 10px;
     font-size: 1.8rem;
     list-style: none;
-    border-bottom: 1px solid #cd5c5c;
+    border-bottom: 1px solid #a9a9a9;
     transition-duration: 0.7s;
   }
 
   &__item-name:hover {
-    background-color: #f5f5f5;
+    background-color: rgba($color: #D6051B, $alpha: 0.1);
   }
 
   &__bottom {

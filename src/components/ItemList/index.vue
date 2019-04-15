@@ -9,9 +9,15 @@
         v-text-field(v-model="name" label="item name" type="text")
         v-text-field(v-model="price" label="price" type="number")
       v-layout(row wrap)
-        v-btn(round outline class="deep-orange accent-4" @click.native="addItem") 追加
-        v-btn(round outline class="indigo accent-4" v-if="items.length > 0" @click.native="deleteItem") 削除
-        v-btn(round outline class="green accent-4" v-if="items.length > 0" @click.native="saveItem") 保存
+        v-btn(round outline color="#d6051b" @click.native="addItem")
+          i.fas.fa-plus
+          save(style="margin-left: 5px") add
+        v-btn(round outline color="#d6051b" v-if="items.length > 0" @click.native="deleteItem")
+          i.far.fa-trash-alt
+          save(style="margin-left: 5px") delete
+        v-btn(round outline color="#d6051b" v-if="items.length > 0" @click.native="saveItem")
+          i.far.fa-save
+          save(style="margin-left: 5px") save
 </template>
 
 <script lang="ts">

@@ -1,8 +1,8 @@
 <template lang="pug">
   section
     .home__alert
-      v-alert(:value="successFlag" transition="fade" color="#43A047" icon="check_circle") {{successMessage}}
-      v-alert(:value="errorFlag" transition="fade" color="#E53935" icon="warning") {{errorMessage}}
+      v-alert(:value="successFlag" transition="fade" color="#a9a9a9" icon="check_circle") {{successMessage}}
+      v-alert(:value="errorFlag" transition="fade" color="#a9a9a9" icon="warning") {{errorMessage}}
     .home__loading-block(v-if="isLoading")
       v-progress-circular.mt-4(indeterminate color="primary")
     v-container(v-else)
