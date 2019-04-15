@@ -9,7 +9,7 @@
         v-text-field(v-model="name" label="item name" type="text")
         v-text-field(v-model="price" label="price" type="number")
       v-layout(row wrap)
-        v-btn(round outline class="deep-orange accent-4" @click.native="addItem" @keyup.enter="addItem") 追加
+        v-btn(round outline class="deep-orange accent-4" @click.native="addItem") 追加
         v-btn(round outline class="indigo accent-4" v-if="items.length > 0" @click.native="deleteItem") 削除
         v-btn(round outline class="green accent-4" v-if="items.length > 0" @click.native="saveItem") 保存
 </template>
@@ -35,7 +35,7 @@ export default class ItemList extends Vue {
       this.$emit('inputErr', '金額を入力してください')
       return
     }
-    this.$store.dispatch('addItem', {
+    this.$store.dispatch('addItemAction', {
       name: this.name,
       price: Number(this.price)
     })
@@ -49,7 +49,7 @@ export default class ItemList extends Vue {
 
   deleteItem() {
     if (this.items.length === 0 || this.selectIndex === null) return
-    this.$store.dispatch('deleteItem', this.selectIndex)
+    this.$store.dispatch('deleteItemAction', this.selectIndex)
   }
 
   saveItem() {

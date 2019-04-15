@@ -15,19 +15,7 @@ import firebase from '~/plugins/firebase.js'
 
 @Component({})
 export default class Glovalnav extends Vue {
-  @Prop() isLogin!: boolean
-
-  get isShowHomeLink(): boolean {
-    return this.isLogin && this.$route.fullPath !== '/home'
-  }
-
-  login(): void {
-    this.$router.push('/login')
-  }
-
   logout(): void {
-    // todo: ログアウト後loginへ遷移される
-    this.$router.push('/')
     firebase.auth().signOut()
   }
 }

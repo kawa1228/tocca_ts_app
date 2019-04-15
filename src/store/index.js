@@ -3,7 +3,7 @@ import firebase from '~/plugins/firebase.js'
 export const state = () => ({
   isLoading: false,
   user: () => {},
-  items: () => []
+  items: []
 })
 
 export const mutations = {
@@ -18,6 +18,14 @@ export const mutations = {
       id: null,
       isLogin: false
     }
+  },
+  addItem(state, item) {
+    state.items.push(item)
+  },
+  deleteItem(state, index) {
+    const items = state.items.slice()
+    items.splice(index, 1)
+    state.items = items
   },
   setItems(state, items) {
     state.items = items
@@ -52,14 +60,11 @@ export const actions = {
         console.log('初期データの読み込みに失敗しました', err)
       })
   },
-  addItem(store, item) {
-    const items = [...store.state.items, item]
-    store.commit('setItems', items)
+  addItemAction(store, item) {
+    store.commit('addItem', item)
   },
-  deleteItem(store, index) {
-    const items = store.state.items.slice()
-    items.splice(index, 1)
-    store.commit('setItems', items)
+  deleteItemAction(store, index) {
+    store.commit('deleteItem', index)
   },
   isLoadingAction(store, isLoad) {
     if (isLoad) {

@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    Glovalnav(:isLogin='isLogin')
+    Glovalnav
     nuxt
 </template>
 
@@ -11,15 +11,6 @@ import Glovalnav from '~/components/Glovalnav.vue'
 @Component({
   components: {
     Glovalnav
-  },
-  computed: {
-    isLogin(): boolean {
-      if (this.$store.state.user.isLogin === undefined) {
-        return false
-      } else {
-        return this.$store.state.user.isLogin
-      }
-    }
   }
 })
 export default class extends Vue {
