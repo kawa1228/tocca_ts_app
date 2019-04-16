@@ -54,7 +54,10 @@ export default class ItemList extends Vue {
   }
 
   deleteItem() {
-    if (this.items.length === 0 || this.selectIndex === null) return
+    if (this.items.length === 0 || this.selectIndex === null) {
+      this.$emit('inputErr', '削除する項目を選んでください')
+      return
+    }
     this.$store.dispatch('deleteItemAction', this.selectIndex)
   }
 
