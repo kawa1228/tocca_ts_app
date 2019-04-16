@@ -4,7 +4,7 @@
       v-alert(:value="successFlag" transition="fade" color="#a9a9a9" icon="check_circle") {{successMessage}}
       v-alert(:value="errorFlag" transition="fade" color="#a9a9a9" icon="warning") {{errorMessage}}
     .home__loading-block(v-if="isLoading")
-      v-progress-circular.mt-4(indeterminate color="primary")
+      v-progress-circular.mt-4(indeterminate color="rgba(255, 177, 175)" :rorare="360" :size="50")
     v-container(v-else)
       v-layout(justify-space-between mb-4)
         h1 tocca price
