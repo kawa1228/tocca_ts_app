@@ -11,13 +11,13 @@
       v-layout(row wrap)
         v-btn(round outline color="#d6051b" @click.native="addItem")
           i.fas.fa-plus
-          save(style="margin-left: 5px") add
+          span(style="margin-left: 5px") add
         v-btn(round outline color="#d6051b" v-if="items.length > 0" @click.native="deleteItem")
           i.far.fa-trash-alt
-          save(style="margin-left: 5px") delete
+          span(style="margin-left: 5px") delete
         v-btn(round outline color="#d6051b" v-if="items.length > 0" @click.native="saveItem")
           i.far.fa-save
-          save(style="margin-left: 5px") save
+          span(style="margin-left: 5px") save
 </template>
 
 <script lang="ts">
