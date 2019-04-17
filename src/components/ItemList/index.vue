@@ -14,23 +14,30 @@
         v-btn.item-list__button(round outline color="#d6051b" @click.native="addItem")
           i.fas.fa-plus
           span(style="margin-left: 5px") add
-        v-btn.item-list__button(round outline color="#d6051b" v-if="items.length > 0" @click.native="deleteItem")
+        v-btn.item-list__button(round outline color="#d6051b" v-if="items.length > 0" @click.native="onDeleteButton")
           i.far.fa-trash-alt
           span(style="margin-left: 5px") delete
         v-btn.item-list__button(round outline color="#d6051b" v-if="items.length > 0" @click.native="saveItem")
           i.far.fa-save
           span(style="margin-left: 5px") save
+      DialogModal(v-if="selectIndex && items[selectIndex]" :dialog="dialogFlag" :title="'削除しますか？'" :description="`${items[selectIndex].name}${items[selectIndex].price}円`" @close="dialogFlag=false" @execute="deleteItem")
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import firebase from '~/plugins/firebase.js'
+import DialogModal from '~/components/DialogModal.vue'
 
-@Component({})
+@Component({
+  components: {
+    DialogModal
+  }
+})
 export default class ItemList extends Vue {
   name: string | null = null
   price: number | null = null
   selectIndex: number | null = null
+  dialogFlag: boolean = false
 
   @Prop() items!: { name: string | null; price: number | null }[]
 
@@ -55,12 +62,17 @@ export default class ItemList extends Vue {
     this.selectIndex = index
   }
 
-  deleteItem() {
+  onDeleteButton() {
     if (this.items.length === 0 || this.selectIndex === null) {
       this.$emit('inputErr', '削除する項目を選んでください')
       return
     }
+    this.dialogFlag = true
+  }
+
+  deleteItem() {
     this.$store.dispatch('deleteItemAction', this.selectIndex)
+    this.dialogFlag = false
   }
 
   saveItem() {
