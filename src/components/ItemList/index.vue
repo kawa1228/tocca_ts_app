@@ -4,18 +4,20 @@
       v-container(id="scroll-target" style="max-height: 50vh" class="scroll-y" v-if="items && items.length > 0")
         ul.item-list__items
           li.item-list__item-name(v-for="(item, i) in items" :class="{active: i === selectIndex}" :key="i" @click="selectItem(i)") {{item.name}} {{item.price}} 円
-    v-flex.item-list__bottom
+    v-flex.item-list__bottom(ma-3)
       v-layout(row wrap)
-        v-text-field(v-model="name" label="item name" type="text")
-        v-text-field(v-model="price" label="price" type="number")
-      v-layout(row wrap)
-        v-btn(round outline color="#d6051b" @click.native="addItem")
+        v-flex(xs6)
+          v-text-field(v-model="name" label="item name" type="text")
+        v-flex(xs6)
+          v-text-field(v-model="price" label="price" type="number")
+      v-layout(row wrap justify-space-around)
+        v-btn.item-list__button(round outline color="#d6051b" @click.native="addItem")
           i.fas.fa-plus
           span(style="margin-left: 5px") add
-        v-btn(round outline color="#d6051b" v-if="items.length > 0" @click.native="deleteItem")
+        v-btn.item-list__button(round outline color="#d6051b" v-if="items.length > 0" @click.native="deleteItem")
           i.far.fa-trash-alt
           span(style="margin-left: 5px") delete
-        v-btn(round outline color="#d6051b" v-if="items.length > 0" @click.native="saveItem")
+        v-btn.item-list__button(round outline color="#d6051b" v-if="items.length > 0" @click.native="saveItem")
           i.far.fa-save
           span(style="margin-left: 5px") save
 </template>

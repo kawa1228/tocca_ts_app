@@ -40,6 +40,14 @@
 
   &__bottom {
     position: fixed;
-    bottom: 10px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  @media screen and (max-width: 361px) {
+    &__button {
+      margin: 1px;
+    }
   }
 }
